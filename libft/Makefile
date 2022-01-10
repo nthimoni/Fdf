@@ -76,14 +76,8 @@ AR = ar -rc
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
 INCPATH = -I$(INCDIR)
-
-define cc-command
-	$(CC) -c $(CFLAGS) $(INCPATH) $< -o $@
-endef
 ######################################################################
 NAME = libft.a
-
-INCPATH = -I$(INCDIR)
 
 all: $(NAME)
 
@@ -91,7 +85,7 @@ $(NAME): $(MANOBJ) $(BONOBJ) $(EXTOBJ)
 	$(AR) $(NAME) $(MANOBJ) $(BONOBJ) $(EXTOBJ)
 
 $(OBJDIR)%.o: $(SRCDIR)%.c
-	$(cc-command)
+	$(CC) -c $(CFLAGS) $(INCPATH) $< -o $@
 
 clean:
 	rm -rf $(MANOBJ)
