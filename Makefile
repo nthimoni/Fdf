@@ -3,8 +3,9 @@ OBJDIR = bin/
 INCDIR = include/
 INCLIB = libft/include/
 FTPATH = libft/
+LIBFT = $(FTPATH)libft.a
 ######################################################################
-SRCS = main.c
+SRCS = parse.c
 OBJS = $(SRCS:.c=.o)
 ######################################################################
 CC = clang
@@ -16,19 +17,20 @@ NAME = fdf
 ######################################################################
 all: $(NAME)
 
-$(NAME): mklib $(OBJS)
+$(NAME): $(LIBFT) $(addprefix $(OBJDIR),$(OBJS))
 	$(CC) $(addprefix $(OBJDIR),$(SRCS)) $(LIBPATH) $(LINK) -o $(NAME)
 
 $(OBJDIR)%.o: $(SRCDIR)%.c
 	$(CC) -c $(CFLAGS) $(INCPATH) $< -o $@
 
-mklib:
-	make -C libft/
+$(LIBFT):
+	make -C $(FTPATH)
 
 clean:
 	rm -rf $(OBJS)
 
 fclean: clean
+	make fclean -C $(FTPATH)
 	rm -f $(NAME)
 
 re: fclean $(NAME)
