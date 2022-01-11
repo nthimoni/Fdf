@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 14:23:37 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/09 06:43:52 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/11 02:34:54 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	read_file(int fd, char **prev, char *buffer)
 	bytes = 1;
 	while (!ft_strchr(*prev, '\n') && bytes != 0)
 	{
-		bytes = read(fd, buffer, BUFFER_SIZE);
+		bytes = read(fd, buffer, GNL_BUFFER_SIZE);
 		if (bytes == -1)
 			return (0);
 		if (bytes == 0 && ft_strlen(*prev) == 0)
@@ -86,7 +86,7 @@ char	*get_next_line(int fd)
 	char		*ret;
 	char		*buffer;
 
-	if (fd == -1 || BUFFER_SIZE <= 0)
+	if (fd == -1 || GNL_BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!prev[fd])
 	{
@@ -94,7 +94,7 @@ char	*get_next_line(int fd)
 		if (!prev[fd])
 			return (NULL);
 	}
-	buffer = malloc(BUFFER_SIZE + 1);
+	buffer = malloc(GNL_BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
 	if (!read_file(fd, &prev[fd], buffer))

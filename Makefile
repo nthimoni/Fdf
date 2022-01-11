@@ -5,7 +5,8 @@ INCLIB = libft/include/
 FTPATH = libft/
 LIBFT = $(FTPATH)libft.a
 ######################################################################
-SRCS = parse.c
+SRCS = main.c\
+	   parse.c
 OBJS = $(SRCS:.c=.o)
 ######################################################################
 CC = clang
@@ -18,7 +19,7 @@ NAME = fdf
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(addprefix $(OBJDIR),$(OBJS))
-	$(CC) $(addprefix $(OBJDIR),$(SRCS)) $(LIBPATH) $(LINK) -o $(NAME)
+	$(CC) $(addprefix $(OBJDIR),$(OBJS)) $(LIBPATH) $(LINK) -o $(NAME)
 
 $(OBJDIR)%.o: $(SRCDIR)%.c
 	$(CC) -c $(CFLAGS) $(INCPATH) $< -o $@

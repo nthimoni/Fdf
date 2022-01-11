@@ -8,16 +8,16 @@ EXTDIR = extra/
 INCDIR = include/
 ######################################################################
 EXTFILES = get_next_line_bonus.c\
-			ft_printf.c\
-			write_buf.c\
-			parse_flags.c\
-			print_s.c\
-			print_c.c\
-			print_u.c\
-			print_di.c\
-			print_p.c\
-			print_xX.c\
-			print_percent.c
+			ft_printf/ft_printf.c\
+			ft_printf/write_buf.c\
+			ft_printf/parse_flags.c\
+			ft_printf/print_s.c\
+			ft_printf/print_c.c\
+			ft_printf/print_u.c\
+			ft_printf/print_di.c\
+			ft_printf/print_p.c\
+			ft_printf/print_xX.c\
+			ft_printf/print_percent.c
 
 MANFILES = ft_isalpha.c\
 			ft_isdigit.c\
@@ -67,10 +67,6 @@ BONFILES = ft_lstnew.c\
 BONOBJ = $(addprefix $(OBJDIR), $(addprefix $(BONDIR), $(BONFILES:.c=.o)))
 MANOBJ = $(addprefix $(OBJDIR), $(addprefix $(MANDIR), $(MANFILES:.c=.o)))
 EXTOBJ = $(addprefix $(OBJDIR), $(addprefix $(EXTDIR), $(EXTFILES:.c=.o)))
-######################################################################
-BONSRC = $(addprefix $(SRCDIR), $(addprefix $(BONDIR), $(BONFILES)))
-MANSRC = $(addprefix $(SRCDIR), $(addprefix $(MANDIR), $(MANFILES)))
-EXTSRC = $(addprefix $(SRCDIR), $(addprefix $(EXTDIR), $(EXTFILES)))
 ######################################################################
 AR = ar -rc
 CC = clang

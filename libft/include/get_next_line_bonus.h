@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 15:50:23 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/09 06:45:17 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/11 02:32:35 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 # include <stdlib.h>
 
 # ifndef OPEN_MAX
-#  define OPEN_MAX 4096
+#  define OPEN_MAX 50
 # endif
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2048
+# ifndef GNL_BUFFER_SIZE
+#  define GNL_BUFFER_SIZE 2048
 # endif
 
 char	*get_next_line(int fd);

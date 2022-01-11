@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:19:56 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/11/26 22:20:02 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/11 02:42:05 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,14 @@ static	char	*cpywrd(char const *s, char c)
 	return (wrd);
 }
 
+char	**free_part_tab(char **ret, int a)
+{
+	while (--a >= 0)
+		free(ret[a]);
+	free(ret);
+	return (NULL);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**ret;
@@ -64,7 +72,7 @@ char	**ft_split(char const *s, char c)
 		{
 			ret[a] = cpywrd(s + i, c);
 			if (!ret[a++])
-				return (NULL);
+				return (free_part_tab(ret, a));
 			while (s[i + 1] && s[i + 1] != c)
 				i++;
 		}
