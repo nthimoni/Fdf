@@ -7,7 +7,7 @@ LIBFT = $(FTPATH)libft.a
 ######################################################################
 SRCS = main.c\
 	   parse.c
-OBJS = $(SRCS:.c=.o)
+OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
 ######################################################################
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
@@ -18,8 +18,8 @@ NAME = fdf
 ######################################################################
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(addprefix $(OBJDIR),$(OBJS))
-	$(CC) $(addprefix $(OBJDIR),$(OBJS)) $(LIBPATH) $(LINK) -o $(NAME)
+$(NAME): $(LIBFT) $(OBJS)
+	$(CC) $(OBJS) $(LIBPATH) $(LINK) -o $(NAME)
 
 $(OBJDIR)%.o: $(SRCDIR)%.c
 	$(CC) -c $(CFLAGS) $(INCPATH) $< -o $@

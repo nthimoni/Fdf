@@ -6,7 +6,7 @@
 /*   By: nthimoni <nthimoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 04:15:01 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/11 05:36:52 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/11 06:32:00 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char *argv[])
 		u = 0;
 		while (u < map.max.x)
 		{
-			ft_printf("%3d", map.map[i][u].z);
+			ft_printf("%3d ", map.map[i][u].z);
 			u++;
 		}
 		ft_printf("\n");
