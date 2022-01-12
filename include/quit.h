@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.h                                            :+:      :+:    :+:   */
+/*   quit.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nthimoni <nthimoni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 05:28:19 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/12 01:11:26 by nthimoni         ###   ########.fr       */
+/*   Created: 2022/01/12 06:08:53 by nthimoni          #+#    #+#             */
+/*   Updated: 2022/01/12 06:27:32 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
+#ifndef QUIT_H
+# define QUIT_H
 
-# include <stdlib.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include "fdf.h"
+#include "fdf.h"
 
-int	parse_map(t_map *map, char *file);
+int quit(t_prog *prog);
 
 #endif

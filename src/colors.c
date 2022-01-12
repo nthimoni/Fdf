@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.h                                            :+:      :+:    :+:   */
+/*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nthimoni <nthimoni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 05:28:19 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/12 01:11:26 by nthimoni         ###   ########.fr       */
+/*   Created: 2022/01/12 02:34:43 by nthimoni          #+#    #+#             */
+/*   Updated: 2022/01/12 02:41:15 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
-
-# include <stdlib.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include "fdf.h"
-
-int	parse_map(t_map *map, char *file);
-
-#endif
+int	mkcolor(unsigned char t, unsigned char r, unsigned char g, unsigned char b)
+{
+	return (*(int *)(unsigned char [4]){b, g, r, t});
+}

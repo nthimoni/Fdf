@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.h                                            :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nthimoni <nthimoni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 05:28:19 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/12 01:11:26 by nthimoni         ###   ########.fr       */
+/*   Created: 2022/01/12 04:16:29 by nthimoni          #+#    #+#             */
+/*   Updated: 2022/01/12 04:18:11 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
+#ifndef ERROR_H
+# define ERROR_H
 
-# include <stdlib.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include "fdf.h"
-
-int	parse_map(t_map *map, char *file);
+# define INV_ARG -1
+# define BAD_ALLOC -2
+# define MAP_FORMAT -3
 
 #endif

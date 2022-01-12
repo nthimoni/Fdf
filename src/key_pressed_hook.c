@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.h                                            :+:      :+:    :+:   */
+/*   key_pressed_hook.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nthimoni <nthimoni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 05:28:19 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/12 01:11:26 by nthimoni         ###   ########.fr       */
+/*   Created: 2022/01/12 06:18:35 by nthimoni          #+#    #+#             */
+/*   Updated: 2022/01/12 06:33:28 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
+#include "quit.h"
+#include "fdf.h"
 
-# include <stdlib.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include "fdf.h"
-
-int	parse_map(t_map *map, char *file);
-
-#endif
+int	key_pressed_hook(int keycode, t_prog *prog)
+{
+	if (keycode == 65307)
+		quit(prog);
+	return (0);
+}
