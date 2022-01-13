@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_pressed_hook.c                                 :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 06:18:35 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/12 19:18:37 by nthimoni         ###   ########.fr       */
+/*   Created: 2022/01/12 22:37:04 by nthimoni          #+#    #+#             */
+/*   Updated: 2022/01/13 00:15:27 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "quit.h"
 #include "fdf.h"
-#include "keys.h"
+#include "libft.h"
 
-int	key_pressed_hook(int keycode, t_prog *prog)
+void	print_tab(t_prog *prog)
 {
-	if (keycode == ESC_K)
-		quit(prog);
-	return (0);
+	int	i;
+	int	u;
+
+	i = 0;
+	while (i < prog->map.max.y)
+	{
+		u = 0;
+		while (u < prog->map.max.x)
+		{
+			ft_printf("%3d ", (int)prog->map.map[i][u].z);
+			u++;
+		}
+		ft_printf("\n");
+		i++;
+	}
 }

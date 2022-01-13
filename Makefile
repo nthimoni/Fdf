@@ -11,22 +11,25 @@ SRCS = main.c\
 	   parse.c\
 	   colors.c\
 	   quit.c\
-	   key_pressed_hook.c
+	   key_pressed_hook.c\
+	   draw.c\
+	   img.c\
+	   error.c
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
 ######################################################################
-CC = clang
-CFLAGS = -g3 -Wall -Wextra -Werror
+CC = clang -g3
+CFLAGS = -Wall -Wextra -Werror
 LINK = -lmlx -lft -lm -lXext -lX11
 INCPATH = -I$(INCDIR) -I$(FTINC) -I$(MLXPATH)
 LIBPATH = -L$(FTPATH) -L$(MLXPATH)
 NAME = fdf
-RUN = ./fdf maps/test_maps/42.fdf
+RUN = valgrind --leak-check=full ./fdf maps/test_maps/42.fdf
 ######################################################################
 all: $(NAME)
 
 $(NAME): $(MLX) $(LIBFT) $(OBJS)
 	$(CC) $(OBJS) $(LIBPATH) $(LINK) -o $(NAME)
-	#$(RUN)
+	$(RUN)
 
 $(OBJDIR)%.o: $(SRCDIR)%.c
 	$(CC) -c $(CFLAGS) $(INCPATH) $< -o $@

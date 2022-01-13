@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_pressed_hook.c                                 :+:      :+:    :+:   */
+/*   draw.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 06:18:35 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/12 19:18:37 by nthimoni         ###   ########.fr       */
+/*   Created: 2022/01/12 22:32:56 by nthimoni          #+#    #+#             */
+/*   Updated: 2022/01/12 22:39:08 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "quit.h"
-#include "fdf.h"
-#include "keys.h"
+#ifndef DRAW_H
+# define DRAW_H
 
-int	key_pressed_hook(int keycode, t_prog *prog)
-{
-	if (keycode == ESC_K)
-		quit(prog);
-	return (0);
-}
+void	print_tab(t_prog *prog);
+
+#endif

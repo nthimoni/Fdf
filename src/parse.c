@@ -6,7 +6,7 @@
 /*   By: nthimoni <nthimoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 06:14:48 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/12 07:09:14 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/12 22:23:06 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,11 @@
 #include "parse.h"
 #include "error.h"
 
-static int	get_map_size(t_map *map, char *file)
+static int	get_map_size(t_map *map, int fd)
 {
 	char	*line;
 	int		i;
-	int		fd;
 
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		return (INV_ARG);
 	line = get_next_line(fd);
 	if (!line)
 		return (MAP_FORMAT);
@@ -40,7 +36,6 @@ static int	get_map_size(t_map *map, char *file)
 		map->max.y++;
 		line = get_next_line(fd);
 	}
-	close(fd);
 	return (0);
 }
 
@@ -70,15 +65,13 @@ static int	map_alloc(t_map *map)
 	return (0);
 }
 
-static void	fill_map(t_map *map, char *file)
+static void	fill_map(t_map *map, int fd)
 {
-	int		fd;
 	char	*line;
 	char	**words;
 	int		i;
 	int		u;
 
-	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
 	u = 0;
 	while (line)
@@ -87,9 +80,9 @@ static void	fill_map(t_map *map, char *file)
 		words = ft_split(line, ' ');
 		while (words[i])
 		{
-			map->map[u][i].x = i;
-			map->map[u][i].y = u;
-			map->map[u][i].z = ft_atoi(words[i]);
+			map->map[u][i].x = (float)i;
+			map->map[u][i].y = (float)u;
+			map->map[u][i].z = (float)ft_atoi(words[i]);
 			free(words[i]);
 			i++;
 		}
@@ -98,19 +91,27 @@ static void	fill_map(t_map *map, char *file)
 		line = get_next_line(fd);
 		u++;
 	}
-	close(fd);
 }
 
 int	parse_map(t_map *map, char *file)
 {
 	int	error;
+	int	fd;
 
-	error = get_map_size(map, file);
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (INV_ARG);
+	error = get_map_size(map, fd);
+	close(fd);
 	if (error)
 		return (error);
 	error = map_alloc(map);
 	if (error)
 		return (error);
-	fill_map(map, file);
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (INV_ARG);
+	fill_map(map, fd);
+	close(fd);
 	return (0);
 }

@@ -6,15 +6,15 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 06:08:53 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/12 06:27:32 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/12 19:17:14 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef QUIT_H
 # define QUIT_H
 
-#include "fdf.h"
+# include "fdf.h"
 
-int quit(t_prog *prog);
+int	quit(t_prog *prog);
 
 #endif

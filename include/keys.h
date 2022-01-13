@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_pressed_hook.c                                 :+:      :+:    :+:   */
+/*   keys.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 06:18:35 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/12 19:18:37 by nthimoni         ###   ########.fr       */
+/*   Created: 2022/01/12 17:41:59 by nthimoni          #+#    #+#             */
+/*   Updated: 2022/01/12 17:42:57 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "quit.h"
-#include "fdf.h"
-#include "keys.h"
+#ifndef KEYS_H
+# define KEYS_H
 
-int	key_pressed_hook(int keycode, t_prog *prog)
-{
-	if (keycode == ESC_K)
-		quit(prog);
-	return (0);
-}
+# define ESC_K 65307
+
+#endif
