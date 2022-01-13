@@ -14,7 +14,8 @@ SRCS = main.c\
 	   key_pressed_hook.c\
 	   draw.c\
 	   img.c\
-	   error.c
+	   error.c\
+	   bresenham.c
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
 ######################################################################
 CC = clang -g3
@@ -47,8 +48,8 @@ clean:
 	rm -rf $(OBJS)
 
 fclean: clean
-	make fclean -C $(FTPATH)
-	make clean -C $(MLXPATH)
+	#make fclean -C $(FTPATH)
+	#make clean -C $(MLXPATH)
 	rm -f $(NAME)
 
 re: fclean $(NAME)

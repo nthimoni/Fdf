@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   img.h                                              :+:      :+:    :+:   */
+/*   draw_line.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 23:29:33 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/13 03:10:04 by nthimoni         ###   ########.fr       */
+/*   Created: 2022/01/13 05:33:26 by nthimoni          #+#    #+#             */
+/*   Updated: 2022/01/13 05:34:14 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IMG_H
-# define IMG_H
+#ifndef DRAW_LINE_H
+# define DRAW_LINE_H
 
-# include "fdf.h"
-
-int		new_img(t_img *img, t_win *win);
-void	pix_put_img(int x, int y, int color, t_img *img);
+void	draw_line(t_2point p1, t_2point p2, t_img *img);
 
 #endif

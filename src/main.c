@@ -6,7 +6,7 @@
 /*   By: nthimoni <nthimoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 04:15:01 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/13 02:18:26 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/13 05:57:28 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include "error.h"
 #include "quit.h"
 #include "hook.h"
-#include "draw.h"
+#include "draw_line.h"
 #include "colors.h"
 
 static int	init(t_win *win, t_map *map, int argc, char *argv[])
@@ -46,12 +46,16 @@ int	main(int argc, char *argv[])
 {
 	t_prog	prog;
 	t_img	img;
+
 	if (!init(&prog.win, &prog.map, argc, argv))
 		return (-1);
-	print_tab(&prog);
-	
 	new_img(&img, &prog.win);
-
+	t_2point p1 = {10, 10};
+	t_2point p2 = {500, 500};
+	draw_line(p2, p1, &img);
+	pix_put_img(p1.x, p1.y, RED, &img);
+	pix_put_img(p2.x, p2.y, RED, &img);
+	mlx_put_image_to_window(prog.win.mlx, prog.win.win, img.img, 0, 0);
 	mlx_hook(prog.win.win, KeyPress, KeyPressMask, key_pressed_hook, &prog);
 	mlx_hook(prog.win.win, DestroyNotify, StructureNotifyMask, quit, &prog);
 	mlx_loop(prog.win.mlx);

@@ -6,14 +6,14 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 01:07:50 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/13 01:24:31 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/13 03:42:25 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-#include <stdlib.h>
+# include <stdlib.h>
 
 typedef struct s_point
 {
@@ -21,6 +21,12 @@ typedef struct s_point
 	float	y;
 	float	z;
 }	t_point;
+
+typedef struct s_2point
+{
+	int x;
+	int y;
+}	t_2point;
 
 typedef struct s_map
 {
@@ -35,6 +41,8 @@ typedef struct s_img
 	int		bpp;
 	int		line_length;
 	int		endian;
+	size_t	w;
+	size_t	h;
 }	t_img;
 
 typedef struct s_win
