@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 23:34:33 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/13 05:46:09 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/14 08:27:07 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "img.h"
 #include "fdf.h"
 #include "error.h"
+#include "constantes.h"
 
 int	new_img(t_img *img, t_win *win)
 {
@@ -31,6 +32,8 @@ void	pix_put_img(int x, int y, int color, t_img *img)
 {
 	char	*dst;
 
+	x += W_WIDTH / 2;
+	y += W_HEIGHT / 2;
 	if (x < 0 || x >= (int)img->w || y < 0 || y >= (int)img->h)
 		return ;
 	dst = img->addr + (y * img->line_length + x * (img->bpp / 8));

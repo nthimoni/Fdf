@@ -6,15 +6,17 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 22:37:04 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/14 04:01:34 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/14 08:37:27 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "mlx.h"
 #include "libft.h"
 #include "img.h"
 #include "draw_line.h"
 #include "colors.h"
+#include "constantes.h"
 
 void	print_tab(t_prog *prog)
 {
@@ -60,4 +62,12 @@ void	print_map_img(t_map *map, t_img *img)
 		}
 		i++;
 	}
+}
+
+int	render(t_prog *prog)
+{
+	ft_bzero(prog->img->addr, sizeof(int) * W_WIDTH * W_HEIGHT);
+	print_map_img(&prog->map, prog->img);
+	mlx_put_image_to_window(prog->win.mlx, prog->win.win, prog->img->img, 0, 0);
+	return (0);
 }

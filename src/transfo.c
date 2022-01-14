@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 04:06:11 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/14 05:55:28 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/14 09:07:59 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	rotateZ(float tz, t_map *map)
 		}
 		i++;
 	}
-
 }
 
 void	rotateY(float ty, t_map *map)
@@ -103,4 +102,24 @@ void	rotateY(float ty, t_map *map)
 		i++;
 	}
 
+}
+
+void	scale(float sx, float sy, float sz, t_map *map)
+{
+	int	i;
+	int	u;
+
+	i = 0;
+	while (i < map->max.y)
+	{
+		u = 0;
+		while (u < map->max.x)
+		{
+			map->map[i][u].x *= sx;
+			map->map[i][u].y *= sy;
+			map->map[i][u].z *= sz;
+			u++;
+		}
+		i++;
+	}
 }

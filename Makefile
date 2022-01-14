@@ -20,19 +20,20 @@ SRCS = main.c\
 	   transfo.c
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
 ######################################################################
-CC = clang -g3
+CC = clang -O3 -Ofast
 CFLAGS = -Wall -Wextra -Werror
 LINK = -lmlx -lft -lm -lXext -lX11
 INCPATH = -I$(INCDIR) -I$(FTINC) -I$(MLXPATH)
 LIBPATH = -L$(FTPATH) -L$(MLXPATH)
 NAME = fdf
-RUN = valgrind --leak-check=full ./fdf maps/test_maps/42.fdf
+VAL = valgrind --leak-check=full ./fdf maps/test_maps/42.fdf
+RUN = ./fdf maps/test_maps/42.fdf
 ######################################################################
 all: $(NAME)
+	$(RUN)
 
 $(NAME): $(MLX) $(LIBFT) $(OBJS)
 	$(CC) $(OBJS) $(LIBPATH) $(LINK) -o $(NAME)
-	$(RUN)
 
 $(OBJDIR)%.o: $(SRCDIR)%.c
 	$(CC) -c $(CFLAGS) $(INCPATH) $< -o $@
@@ -46,12 +47,15 @@ $(MLX):
 run:
 	$(RUN)
 
+val:
+	$(VAL)
+
 clean:
 	rm -rf $(OBJS)
 
 fclean: clean
-	#make fclean -C $(FTPATH)
-	#make clean -C $(MLXPATH)
+	make fclean -C $(FTPATH)
+	make clean -C $(MLXPATH)
 	rm -f $(NAME)
 
 re: fclean $(NAME)

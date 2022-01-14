@@ -6,7 +6,7 @@
 /*   By: nthimoni <nthimoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 04:15:01 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/14 05:56:33 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/14 08:54:58 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,18 @@ int	main(int argc, char *argv[])
 	if (!init(&prog.win, &prog.map, argc, argv))
 		return (-1);
 	new_img(&img, &prog.win);
+	prog.img = &img;
+	translate( - ((prog.map.max.x - 1) * X_SC) / 2,
+			- ((prog.map.max.y - 1) * Y_SC) / 2, 0, &prog.map);
 	rotateY(-(M_PI / 4), &prog.map);
 	rotateX(M_PI / 4, &prog.map);
 	rotateZ(M_PI / 4, &prog.map);
-	translate(300, 300 , 0, &prog.map);
-	print_map_img(&prog.map, &img);
-	mlx_put_image_to_window(prog.win.mlx, prog.win.win, img.img, 0, 0);
+	print_map_img(&prog.map, prog.img);
+	render(&prog);
 	mlx_hook(prog.win.win, KeyPress, KeyPressMask, key_pressed_hook, &prog);
 	mlx_hook(prog.win.win, DestroyNotify, StructureNotifyMask, quit, &prog);
 	mlx_loop(prog.win.mlx);
+	free_map(&prog.map);
 	mlx_destroy_image(prog.win.mlx, img.img);
 	mlx_destroy_window(prog.win.mlx, prog.win.win);
 	mlx_destroy_display(prog.win.mlx);

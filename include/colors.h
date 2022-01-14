@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 02:28:17 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/13 19:51:04 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/14 06:39:59 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define RED 0x00FF0000
 # define GREEN 0x0000FF00
 # define BLUE 0x000000FF
+# define STD_COLOR 0x6DCBD0
 
 int	mkcolor(unsigned char t, unsigned char r, unsigned char g, unsigned char b);
 

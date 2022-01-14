@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 03:02:56 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/14 03:30:50 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/14 06:37:41 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	oct1458(t_2point p1, t_2point p2, t_2point d, t_img *img)
 	e = d.y / 2;
 	while (p1.y <= p2.y)
 	{
-		pix_put_img(p1.x, p1.y, GREEN, img);
+		pix_put_img(p1.x, p1.y, STD_COLOR, img);
 		p1.y++;
 		if (d.x > 0)
 			e -= d.x;
@@ -41,7 +41,7 @@ void	oct1458(t_2point p1, t_2point p2, t_2point d, t_img *img)
 			e += d.y;
 		}
 	}
-	pix_put_img(p2.x, p2.y, GREEN, img);
+	pix_put_img(p2.x, p2.y, STD_COLOR, img);
 }
 
 void	oct2367(t_2point p1, t_2point p2, t_2point d, t_img *img)
@@ -53,7 +53,7 @@ void	oct2367(t_2point p1, t_2point p2, t_2point d, t_img *img)
 	e = d.x / 2;
 	while (p1.x <= p2.x)
 	{
-		pix_put_img(p1.x, p1.y, GREEN, img);
+		pix_put_img(p1.x, p1.y, STD_COLOR, img);
 		p1.x++;
 		if (d.y > 0)
 			e -= d.y;
@@ -68,7 +68,7 @@ void	oct2367(t_2point p1, t_2point p2, t_2point d, t_img *img)
 			e += d.x;
 		}
 	}
-	pix_put_img(p2.x, p2.y, GREEN, img);
+	pix_put_img(p2.x, p2.y, STD_COLOR, img);
 }
 
 void	draw_line(t_2point p1, t_2point p2, t_img *img)
@@ -104,7 +104,7 @@ void	oct15(t_2point p1, t_2point p2, t_2point d, t_img *img)
 	e = d.y / 2;
 	while (p1.y <= p2.y)
 	{
-		pix_put_img(p1.x, p1.y, GREEN, img);
+		pix_put_img(p1.x, p1.y, STD_COLOR, img);
 		p1.y++;
 		e += d.x;
 		if (e <= 0)
@@ -113,7 +113,7 @@ void	oct15(t_2point p1, t_2point p2, t_2point d, t_img *img)
 			e += d.y;
 		}
 	}
-	pix_put_img(p2.x, p2.y, GREEN, img);
+	pix_put_img(p2.x, p2.y, STD_COLOR, img);
 }
 
 void	oct26(t_2point p1, t_2point p2, t_2point d, t_img *img)
@@ -125,7 +125,7 @@ void	oct26(t_2point p1, t_2point p2, t_2point d, t_img *img)
 	e = d.x / 2;
 	while (p1.x <= p2.x)
 	{
-		pix_put_img(p1.x, p1.y, GREEN, img);
+		pix_put_img(p1.x, p1.y, STD_COLOR, img);
 		p1.x++;
 		e += d.y;
 		if (e <= 0)
@@ -134,6 +134,6 @@ void	oct26(t_2point p1, t_2point p2, t_2point d, t_img *img)
 			e += d.x;
 		}
 	}
-	pix_put_img(p2.x, p2.y, GREEN, img);
+	pix_put_img(p2.x, p2.y, STD_COLOR, img);
 }
 */

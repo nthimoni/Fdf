@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 06:03:19 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/12 19:44:29 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/14 07:46:13 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "fdf.h"
 #include "libft.h"
 
-static void	free_map(t_map *map)
+void	free_map(t_map *map)
 {
 	int	i;
 
@@ -27,7 +27,6 @@ static void	free_map(t_map *map)
 
 int	quit(t_prog *prog)
 {
-	free_map(&prog->map);
 	mlx_loop_end(prog->win.mlx);
 	return (0);
 }
