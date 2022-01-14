@@ -6,7 +6,7 @@
 /*   By: nthimoni <nthimoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 04:15:01 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/14 01:36:49 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/14 02:23:59 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(int argc, char *argv[])
 		return (-1);
 	new_img(&img, &prog.win);
 	t_2point p1 = {W_WIDTH / 2, W_HEIGHT / 2};
-/*	for (int i = 0; i < W_WIDTH; i += 20)
+	for (int i = 0; i < W_WIDTH; i += 20)
 	{	
 		pix_put_img(i, 0, RED, &img);
 		pix_put_img(i, W_HEIGHT - 1, RED, &img);
@@ -68,7 +68,7 @@ int	main(int argc, char *argv[])
 		draw_line(p1, (t_2point){W_WIDTH - 1, i}, &img);
 
 
-	}*/
+	}
 		draw_line(p1, (t_2point){p1.x, p1.y + 50}, &img);
 		draw_line(p1, (t_2point){p1.x, p1.y - 50}, &img);
 		draw_line(p1, (t_2point){p1.x + 50, p1.y}, &img);

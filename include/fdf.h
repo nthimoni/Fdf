@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 01:07:50 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/13 03:42:25 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/14 02:19:48 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ typedef struct s_point
 
 typedef struct s_2point
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 }	t_2point;
 
 typedef struct s_map
