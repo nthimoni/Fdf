@@ -6,13 +6,14 @@
 /*   By: nthimoni <nthimoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 06:14:48 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/13 18:39:05 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/14 03:56:07 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "parse.h"
 #include "error.h"
+#include "constantes.h"
 
 static int	get_map_size(t_map *map, int fd)
 {
@@ -80,9 +81,9 @@ static void	fill_map(t_map *map, int fd)
 		words = ft_split(line, ' ');
 		while (words[i])
 		{
-			map->map[u][i].x = (float)i;
-			map->map[u][i].y = (float)u;
-			map->map[u][i].z = (float)ft_atoi(words[i]);
+			map->map[u][i].x = (float)(i * X_SC);
+			map->map[u][i].y = (float)(u * Y_SC);
+			map->map[u][i].z = (float)(ft_atoi(words[i]) * Z_SC);
 			free(words[i]);
 			i++;
 		}

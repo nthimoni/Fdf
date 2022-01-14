@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 03:02:56 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/14 02:23:02 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/14 03:30:50 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,8 @@
 #include "img.h"
 #include "colors.h"
 #include "libft.h"
+#include "utils.h"
 #include <math.h>
-
-int	vabs(int a)
-{
-	if (a < 0)
-		return (-a);
-	return (a);
-}
-
-void	swap_p(t_2point *p1, t_2point *p2, t_2point *d)
-{
-	int	temp;
-
-	temp = p1->x;
-	p1->x = p2->x;
-	p2->x = temp;
-	temp = p1->y;
-	p1->y = p2->y;
-	p2->y = temp;
-	d->x = -d->x;
-	d->y = -d->y;
-}
 
 void	oct1458(t_2point p1, t_2point p2, t_2point d, t_img *img)
 {

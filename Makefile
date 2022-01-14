@@ -15,7 +15,9 @@ SRCS = main.c\
 	   draw.c\
 	   img.c\
 	   error.c\
-	   bresenham.c
+	   bresenham.c\
+	   utils.c\
+	   transfo.c
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
 ######################################################################
 CC = clang -g3

@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   constantes.h                                       :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 02:52:14 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/14 05:38:11 by nthimoni         ###   ########.fr       */
+/*   Created: 2022/01/14 03:25:42 by nthimoni          #+#    #+#             */
+/*   Updated: 2022/01/14 03:30:26 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONSTANTES_H
-# define CONSTANTES_H
+#include "fdf.h"
 
-# include <math.h>
+t_2point	pt(int x, int y)
+{
+	return ((t_2point){x, y});
+}
 
-# define W_TITLE "FDF"
-# define W_WIDTH 1920
-# define W_HEIGHT 1080
+int	vabs(int a)
+{
+	if (a < 0)
+		return (-a);
+	return (a);
+}
 
-# define X_SC 50
-# define Y_SC 50
-# define Z_SC 20
+void	swap_p(t_2point *p1, t_2point *p2, t_2point *d)
+{
+	int	temp;
 
-# define FOV 45
-
-#endif
+	temp = p1->x;
+	p1->x = p2->x;
+	p2->x = temp;
+	temp = p1->y;
+	p1->y = p2->y;
+	p2->y = temp;
+	d->x = -d->x;
+	d->y = -d->y;
+}
