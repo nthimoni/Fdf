@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 03:02:56 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/13 06:00:01 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/14 01:46:13 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,67 @@
 #include "libft.h"
 #include <math.h>
 
-void	swap_p(t_2point *p1, t_2point *p2)
+int	vabs(int a)
 {
-	t_2point	temp;
+	if (a < 0)
+		return (-a);
+	return (a);
+}
 
-	temp.x = p1->x;
-	temp.y = p1->y;
+void	swap_p(t_2point *p1, t_2point *p2, t_2point *d)
+{
+	int	temp;
+
+	temp = p1->x;
 	p1->x = p2->x;
+	p2->x = temp;
+	temp = p1->y;
 	p1->y = p2->y;
-	p2->x = temp.x;
-	p2->y = temp.y;
+	p2->y = temp;
+	d->x = -d->x;
+	d->y = -d->y;
+}
+
+void	oct48(t_2point p1, t_2point p2, t_2point d, t_img *img)
+{
+	int	e;
+
+	if (d.y < 0)
+		swap_p(&p1, &p2, &d);
+	e = d.y / 2;
+	while (p1.y <= p2.y)
+	{
+		pix_put_img(p1.x, p1.y, GREEN, img);
+		p1.y++;
+		e -= d.x;
+		if (e <= 0)
+		{
+			p1.x++;
+			e += d.y;
+		}
+	}
+	pix_put_img(p2.x, p2.y, GREEN, img);
+}
+
+void	oct15(t_2point p1, t_2point p2, t_2point d, t_img *img)
+{
+	int	e;
+
+	if (d.y < 0)
+		swap_p(&p1, &p2, &d);
+	e = d.y / 2;
+	while (p1.y <= p2.y)
+	{
+		pix_put_img(p1.x, p1.y, GREEN, img);
+		p1.y++;
+		e += d.x;
+		if (e <= 0)
+		{
+			p1.x--;
+			e += d.y;
+		}
+	}
+	pix_put_img(p2.x, p2.y, GREEN, img);
 }
 
 void	oct37(t_2point p1, t_2point p2, t_2point d, t_img *img)
@@ -33,14 +84,11 @@ void	oct37(t_2point p1, t_2point p2, t_2point d, t_img *img)
 	int	e;
 
 	if (d.x < 0)
-		swap_p(&p1, &p2);
-	e = p2.x - p1.x;
-	d.x = e * 2;
-	d.y = (p2.y - p1.y) * 2;
+		swap_p(&p1, &p2, &d);
+	e = d.x / 2;
 	while (p1.x <= p2.x)
 	{
 		pix_put_img(p1.x, p1.y, GREEN, img);
-		ft_printf(" %d %d \n", p1.x, p1.y);
 		p1.x++;
 		e -= d.y;
 		if (e <= 0)
@@ -49,7 +97,28 @@ void	oct37(t_2point p1, t_2point p2, t_2point d, t_img *img)
 			e += d.x;
 		}
 	}
-	pix_put_img(p2.x, p2.y, WHITE, img);
+	pix_put_img(p2.x, p2.y, GREEN, img);
+}
+
+void	oct26(t_2point p1, t_2point p2, t_2point d, t_img *img)
+{
+	int	e;
+
+	if (d.x < 0)
+		swap_p(&p1, &p2, &d);
+	e = d.x / 2;
+	while (p1.x <= p2.x)
+	{
+		pix_put_img(p1.x, p1.y, GREEN, img);
+		p1.x++;
+		e += d.y;
+		if (e <= 0)
+		{
+			p1.y--;
+			e += d.x;
+		}
+	}
+	pix_put_img(p2.x, p2.y, GREEN, img);
 }
 
 void	draw_line(t_2point p1, t_2point p2, t_img *img)
@@ -57,20 +126,20 @@ void	draw_line(t_2point p1, t_2point p2, t_img *img)
 	int	dx;
 	int	dy;
 
-	dx = p2.x - p1.x;
-	dy = p2.y - p1.y;
+	dx = (p2.x - p1.x) * 2;
+	dy = (p2.y - p1.y) * 2;
 	if ((dx > 0 && dy >= 0) || (dx < 0 && dy <= 0))
 	{
-		if (abs(dx) >= abs(dy))
-			oct37(p1, p2, (t_2point){p2.x - p1.x, p2.y - p1.y}, img);
+		if (vabs(dx) >= vabs(dy))
+			oct37(p1, p2, (t_2point){dx, dy}, img);
 		else
-			ft_printf("");
+			oct48(p1, p2, (t_2point){dx, dy}, img);
 	}
 	else
 	{
-		if (abs(dy) > abs(dx))
-			ft_printf("");
+		if (vabs(dy) > vabs(dx))
+			oct15(p1, p2, (t_2point){dx, dy}, img);
 		else
-			ft_printf("");
+			oct26(p1, p2, (t_2point){dx, dy}, img);
 	}
 }

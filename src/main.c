@@ -6,7 +6,7 @@
 /*   By: nthimoni <nthimoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 04:15:01 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/13 05:57:28 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/14 01:36:49 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,42 @@ int	main(int argc, char *argv[])
 	if (!init(&prog.win, &prog.map, argc, argv))
 		return (-1);
 	new_img(&img, &prog.win);
-	t_2point p1 = {10, 10};
-	t_2point p2 = {500, 500};
-	draw_line(p2, p1, &img);
+	t_2point p1 = {W_WIDTH / 2, W_HEIGHT / 2};
+/*	for (int i = 0; i < W_WIDTH; i += 20)
+	{	
+		pix_put_img(i, 0, RED, &img);
+		pix_put_img(i, W_HEIGHT - 1, RED, &img);
+
+		draw_line(p1, (t_2point){i, 0}, &img);
+		draw_line(p1, (t_2point){i, W_HEIGHT - 1}, &img);
+
+	}
+	for (int i = 0; i < W_HEIGHT; i += 20)
+	{	
+		pix_put_img(0, i, RED, &img);
+		pix_put_img(W_WIDTH - 1, i, RED, &img);
+		draw_line(p1, (t_2point){0, i}, &img);
+		draw_line(p1, (t_2point){W_WIDTH - 1, i}, &img);
+
+
+	}*/
+		draw_line(p1, (t_2point){p1.x, p1.y + 50}, &img);
+		draw_line(p1, (t_2point){p1.x, p1.y - 50}, &img);
+		draw_line(p1, (t_2point){p1.x + 50, p1.y}, &img);
+		draw_line(p1, (t_2point){p1.x - 50, p1.y}, &img);
+		draw_line(p1, (t_2point){p1.x + 50, p1.y + 50}, &img);
+		draw_line(p1, (t_2point){p1.x - 50, p1.y - 50}, &img);
+		draw_line(p1, (t_2point){p1.x + 50, p1.y - 50}, &img);
+		draw_line(p1, (t_2point){p1.x - 50, p1.y + 50}, &img);
+		pix_put_img(p1.x, p1.y + 50, RED, &img);
+		pix_put_img(p1.x, p1.y - 50, RED, &img);
+		pix_put_img(p1.x + 50, p1.y, RED, &img);
+		pix_put_img(p1.x - 50, p1.y, RED, &img);
+		pix_put_img(p1.x + 50, p1.y + 50, RED, &img);
+		pix_put_img(p1.x - 50, p1.y - 50, RED, &img);
+		pix_put_img(p1.x + 50, p1.y - 50, RED, &img);
+		pix_put_img(p1.x - 50, p1.y + 50, RED, &img);
 	pix_put_img(p1.x, p1.y, RED, &img);
-	pix_put_img(p2.x, p2.y, RED, &img);
 	mlx_put_image_to_window(prog.win.mlx, prog.win.win, img.img, 0, 0);
 	mlx_hook(prog.win.win, KeyPress, KeyPressMask, key_pressed_hook, &prog);
 	mlx_hook(prog.win.win, DestroyNotify, StructureNotifyMask, quit, &prog);
