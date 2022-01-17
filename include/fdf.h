@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 01:07:50 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/14 07:01:24 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/17 21:54:57 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_point
 	float	x;
 	float	y;
 	float	z;
+	int		color;
 }	t_point;
 
 typedef struct s_2point
@@ -32,7 +33,14 @@ typedef struct s_map
 {
 	t_point	**map;
 	t_point	max;
+	char	*path;
 }	t_map;
+
+typedef struct s_line
+{
+	t_2point	p1;
+	t_2point	p2;
+}	t_line;
 
 typedef struct s_img
 {

@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 22:37:04 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/14 08:37:27 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/17 22:53:21 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,15 @@ void	print_map_img(t_map *map, t_img *img)
 			if (u != map->max.x - 1)
 				draw_line((t_2point){(int)map->map[i][u].x,
 					(int)map->map[i][u].y},
-					(t_2point){(int)map->map[i][u + 1].x, 
-					(int)map->map[i][u + 1].y}, img);
+					(t_2point){(int)map->map[i][u + 1].x,
+					(int)map->map[i][u + 1].y}, img,
+					mix_color(map->map[i][u].color, map->map[i][u + 1].color));
 			if (i != map->max.y - 1)
 				draw_line((t_2point){(int)map->map[i][u].x,
 					(int)map->map[i][u].y},
-					(t_2point){(int)map->map[i + 1][u].x, 
-					(int)map->map[i + 1][u].y}, img);
+					(t_2point){(int)map->map[i + 1][u].x,
+					(int)map->map[i + 1][u].y}, img,
+					mix_color(map->map[i + 1][u].color, map->map[i][u].color));
 			u++;
 		}
 		i++;

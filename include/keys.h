@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 17:41:59 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/14 09:14:54 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/17 19:08:54 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # define L_K 108
 # define N_K 110
 # define M_K 109
+# define T_K 116
+# define Y_K 121
 # define PLUS_K 61
 # define MINUS_K 45
 

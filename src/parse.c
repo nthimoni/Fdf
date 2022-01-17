@@ -6,7 +6,7 @@
 /*   By: nthimoni <nthimoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 06:14:48 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/14 03:56:07 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/17 22:53:50 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,32 +66,32 @@ static int	map_alloc(t_map *map)
 	return (0);
 }
 
-static void	fill_map(t_map *map, int fd)
+int	fill_map(t_map *map, int fd, int u)
 {
 	char	*line;
 	char	**words;
 	int		i;
-	int		u;
 
 	line = get_next_line(fd);
-	u = 0;
 	while (line)
 	{
 		i = 0;
 		words = ft_split(line, ' ');
+		free(line);
+		if (!words)
+			return (BAD_ALLOC);
 		while (words[i])
 		{
 			map->map[u][i].x = (float)(i * X_SC);
 			map->map[u][i].y = (float)(u * Y_SC);
 			map->map[u][i].z = (float)(ft_atoi(words[i]) * Z_SC);
-			free(words[i]);
-			i++;
+			free(words[i++]);
 		}
 		free(words);
-		free(line);
 		line = get_next_line(fd);
 		u++;
 	}
+	return (0);
 }
 
 int	parse_map(t_map *map, char *file)
@@ -99,6 +99,9 @@ int	parse_map(t_map *map, char *file)
 	int	error;
 	int	fd;
 
+	map->max.x = 0;
+	map->max.y = 0;
+	map->path = file;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (INV_ARG);
@@ -112,7 +115,9 @@ int	parse_map(t_map *map, char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (INV_ARG);
-	fill_map(map, fd);
+	error = fill_map(map, fd, 0);
 	close(fd);
+	if (error)
+		return (error);
 	return (0);
 }

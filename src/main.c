@@ -6,7 +6,7 @@
 /*   By: nthimoni <nthimoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 04:15:01 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/14 08:54:58 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/18 00:46:52 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	init(t_win *win, t_map *map, int argc, char *argv[])
 	win->w = W_WIDTH;
 	win->h = W_HEIGHT;
 	map->map = NULL;
-	map->max = (t_point){0, 0, 0};
+	map->max = (t_point){0, 0, 0, STD_COLOR};
 	if (argc != 2)
 		return (error_msg(INV_ARG));
 	error_code = parse_map(map, argv[1]);
@@ -51,13 +51,12 @@ int	main(int argc, char *argv[])
 
 	if (!init(&prog.win, &prog.map, argc, argv))
 		return (-1);
+	set_color(&prog.map);
 	new_img(&img, &prog.win);
 	prog.img = &img;
-	translate( - ((prog.map.max.x - 1) * X_SC) / 2,
-			- ((prog.map.max.y - 1) * Y_SC) / 2, 0, &prog.map);
-	rotateY(-(M_PI / 4), &prog.map);
-	rotateX(M_PI / 4, &prog.map);
-	rotateZ(M_PI / 4, &prog.map);
+	translate(- ((prog.map.max.x - 1) * X_SC) / 2,
+		- ((prog.map.max.y - 1) * Y_SC) / 2, 0, &prog.map);
+	isoview(&prog.map);
 	print_map_img(&prog.map, prog.img);
 	render(&prog);
 	mlx_hook(prog.win.win, KeyPress, KeyPressMask, key_pressed_hook, &prog);

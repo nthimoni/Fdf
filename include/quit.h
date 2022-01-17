@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 06:08:53 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/14 07:46:09 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/14 14:07:02 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "fdf.h"
 
-int	quit(t_prog *prog);
+int		quit(t_prog *prog);
 void	free_map(t_map *map);
 
 #endif

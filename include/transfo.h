@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 04:14:04 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/14 09:10:02 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/17 18:56:39 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 # include "fdf.h"
 
 void	translate(int tx, int ty, int tz, t_map *map);
-void	rotateX(float tx, t_map *map);
-void	rotateY(float tx, t_map *map);
-void	rotateZ(float tx, t_map *map);
-void	scale(float sx, float sy, float sz, t_map *map);
-void	extrude(float ex);
+void	rotate_x(float tx, t_map *map);
+void	rotate_y(float tx, t_map *map);
+void	rotate_z(float tx, t_map *map);
+void	scale(float f, t_map *map);
+void	paraview(t_map *map);
+void	isoview(t_map *map);
 
 #endif

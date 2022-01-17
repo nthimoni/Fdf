@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 03:02:56 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/14 06:37:41 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/16 18:18:13 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,20 @@
 #include "colors.h"
 #include "libft.h"
 #include "utils.h"
+#include "constantes.h"
 #include <math.h>
 
-void	oct1458(t_2point p1, t_2point p2, t_2point d, t_img *img)
+static void	oct1458(t_line line, int color, t_2point d, t_img *img)
 {
 	int	e;
 
 	if (d.y < 0)
-		swap_p(&p1, &p2, &d);
+		swap_p(&line.p1, &line.p2, &d);
 	e = d.y / 2;
-	while (p1.y <= p2.y)
+	while (line.p1.y <= line.p2.y)
 	{
-		pix_put_img(p1.x, p1.y, STD_COLOR, img);
-		p1.y++;
+		pix_put_img(line.p1.x, line.p1.y, color, img);
+		line.p1.y++;
 		if (d.x > 0)
 			e -= d.x;
 		else
@@ -35,26 +36,26 @@ void	oct1458(t_2point p1, t_2point p2, t_2point d, t_img *img)
 		if (e <= 0)
 		{
 			if (d.x > 0)
-				p1.x++;
+				line.p1.x++;
 			else
-				p1.x--;
+				line.p1.x--;
 			e += d.y;
 		}
 	}
-	pix_put_img(p2.x, p2.y, STD_COLOR, img);
+	pix_put_img(line.p2.x, line.p2.y, color, img);
 }
 
-void	oct2367(t_2point p1, t_2point p2, t_2point d, t_img *img)
+static void	oct2367(t_line line, int color, t_2point d, t_img *img)
 {
 	int	e;
 
 	if (d.x < 0)
-		swap_p(&p1, &p2, &d);
+		swap_p(&line.p1, &line.p2, &d);
 	e = d.x / 2;
-	while (p1.x <= p2.x)
+	while (line.p1.x <= line.p2.x)
 	{
-		pix_put_img(p1.x, p1.y, STD_COLOR, img);
-		p1.x++;
+		pix_put_img(line.p1.x, line.p1.y, color, img);
+		line.p1.x++;
 		if (d.y > 0)
 			e -= d.y;
 		else
@@ -62,16 +63,16 @@ void	oct2367(t_2point p1, t_2point p2, t_2point d, t_img *img)
 		if (e <= 0)
 		{
 			if (d.y > 0)
-				p1.y++;
+				line.p1.y++;
 			else
-				p1.y--;
+				line.p1.y--;
 			e += d.x;
 		}
 	}
-	pix_put_img(p2.x, p2.y, STD_COLOR, img);
+	pix_put_img(line.p2.x, line.p2.y, color, img);
 }
 
-void	draw_line(t_2point p1, t_2point p2, t_img *img)
+void	draw_line(t_2point p1, t_2point p2, t_img *img, int color)
 {
 	int	dx;
 	int	dy;
@@ -81,16 +82,16 @@ void	draw_line(t_2point p1, t_2point p2, t_img *img)
 	if ((dx > 0 && dy >= 0) || (dx < 0 && dy <= 0))
 	{
 		if (vabs(dx) >= vabs(dy))
-			oct2367(p1, p2, (t_2point){dx, dy}, img);
+			oct2367((t_line){p1, p2}, color, (t_2point){dx, dy}, img);
 		else
-			oct1458(p1, p2, (t_2point){dx, dy}, img);
+			oct1458((t_line){p1, p2}, color, (t_2point){dx, dy}, img);
 	}
 	else
 	{
 		if (vabs(dy) > vabs(dx))
-			oct1458(p1, p2, (t_2point){dx, dy}, img);
+			oct1458((t_line){p1, p2}, color, (t_2point){dx, dy}, img);
 		else
-			oct2367(p1, p2, (t_2point){dx, dy}, img);
+			oct2367((t_line){p1, p2}, color, (t_2point){dx, dy}, img);
 	}
 }
 
