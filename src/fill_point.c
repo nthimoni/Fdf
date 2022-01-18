@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 01:47:39 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/18 02:41:27 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/18 23:39:39 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,36 @@ static	int	ft_atoi_base(char *line, char *base)
 	}
 	return (ret);
 }
-
-void	fill_point(t_point *pnt, char *line, int i, int u)
+#include <stdio.h>
+void	fill_point(t_map *map, char *line, int i, int u)
 {
-	int	j;
+	int		j;
+	float	z;
 
-	pnt->x = (float)(i * X_SC);
-	pnt->y = (float)(u * Y_SC);
-	pnt->z = (float)(ft_atoi(line) * Z_SC);
+	map->map[u][i].x = (float)(i * X_SC);
+	map->map[u][i].y = (float)(u * Y_SC);
+	map->map[u][i].z = (float)(ft_atoi(line) * Z_SC);
+	z = map->map[u][i].z / Z_SC;
 	j = 0;
 	while (line[j])
 	{
 		if (line[j] == 'x')
 		{
-			pnt->color = ft_atoi_base(line + j + 1, "0123456789ABCDEF");
+			map->map[u][i].color = ft_atoi_base(line + j + 1, HEXA_B);
 			return ;
 		}
 		j++;
 	}
-	if (pnt->z <= GROUND_MAX)
-		pnt->color = GROUND_C;
-	else if (pnt->z / Z_SC <= LVL_1_MAX)
-		pnt->color = LVL_1_C;
+	if (z <= GROUND_H)
+		map->map[u][i].color = GROUND_C;
+	else if (z <= LVL_2_H)
+	{
+		map->map[u][i].color = mix_color(LVL_1_C, LVL_2_C,
+		1 - (z - GROUND_H)/(LVL_2_H - GROUND_H));
+	}
 	else
-		pnt->color = LVL_2_C;
+	{
+		map->map[u][i].color = mix_color(LVL_3_C, LVL_4_C,
+		1 - (z - LVL_2_H)/(map->max.z - LVL_2_H));
+	}
 }

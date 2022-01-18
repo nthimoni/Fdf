@@ -6,11 +6,12 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 03:25:42 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/14 03:30:26 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/18 23:24:53 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "libft.h"
 
 t_2point	pt(int x, int y)
 {
@@ -36,4 +37,22 @@ void	swap_p(t_2point *p1, t_2point *p2, t_2point *d)
 	p2->y = temp;
 	d->x = -d->x;
 	d->y = -d->y;
+}
+
+void	get_max_z(t_map *map, char *line)
+{
+	char **words;
+	int	i;
+
+	i = 0;
+	words = ft_split(line, ' ');
+	if (!words)
+		return ;
+	while(words[i])
+	{
+		if (map->max.z < ft_atoi(words[i]))
+			map->max.z = ft_atoi(words[i]);
+		free(words[i++]);
+	}
+	free(words);
 }

@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 02:28:17 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/18 02:18:57 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/18 23:46:14 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,20 @@
 
 # ifdef FR_S // MAP FRANCE BLEU / ROUGE
 #  define GROUND_C 0x002389DA
-#  define GROUND_MAX 0
-#  define LVL_1_C 0x00F9A1A1
-#  define LVL_1_MAX 50
-#  define LVL_2_C 0x00AE2525
+#  define GROUND_H 0
+#  define LVL_1_C 0x00F5d3d3
+#  define LVL_2_H 70
+#  define LVL_2_C 0x00D92323
+#  define LVL_3_C 0x00C71818
+#  define LVL_4_C 0x00300101
 # elif defined M_42 // PURPLE / ORANGE
 #  define GROUND_C 0x00581845
-#  define GROUND_MAX 0
+#  define GROUND_H 0
 #  define LVL_1_C 0x00FF5733
-#  define LVL_1_MAX 50
+#  define LVL_2_H 50
 #  define LVL_2_C 0x00FF5733
+#  define LVL_3_C 0x00FF5733
+#  define LVL_4_C 0x00690404
 # endif
 
 # include "fdf.h"
@@ -42,8 +46,7 @@ unsigned char	get_t(int color);
 unsigned char	get_r(int color);
 unsigned char	get_g(int color);
 unsigned char	get_b(int color);
-void			set_color(t_map *map);
-int				mix_color(int c1, int c2);
-void			fill_point(t_point *pnt, char *line, int i, int u);
+int				mix_color(int c1, int c2, float f);
+void			fill_point(t_map *map, char *line, int i, int u);
 
 #endif

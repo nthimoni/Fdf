@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 18:40:52 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/18 03:21:08 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/18 13:59:14 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 int	isoview(t_map *map)
 {
 	int	code;
+
 	scale(0, map);
 	free_map(map);
 	code = parse_map(map, map->path);

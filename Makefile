@@ -23,8 +23,8 @@ SRCS = main.c\
 	   fill_point.c
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
 #####################################################################
-map = M_42
-#map = FR_S
+#map = M_42
+map = FR_S
 ######################################################################
 CC = clang -O3 -Ofast
 CFLAGS = -Wall -Wextra -Werror -D$(map)

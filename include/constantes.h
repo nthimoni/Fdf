@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 02:52:14 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/18 00:44:44 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/18 23:40:32 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@
 # define SCALE_SPEED 0.1f
 # define MAX_ZOOM 10
 # define EX_SPEED 0.3f
+
+# define HEXA_B "0123456789abcdef"
 
 #endif
