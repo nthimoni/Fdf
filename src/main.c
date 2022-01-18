@@ -6,7 +6,7 @@
 /*   By: nthimoni <nthimoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 04:15:01 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/18 03:07:44 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/18 03:22:51 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ static int	init(t_win *win, t_map *map, int argc, char *argv[])
 	win->w = W_WIDTH;
 	win->h = W_HEIGHT;
 	map->map = NULL;
+	map->path = argv[1];
 	map->max = (t_point){0, 0, 0, STD_COLOR};
 	if (argc != 2)
 		return (error_msg(INV_ARG));
-	error_code = parse_map(map, argv[1]);
+	error_code = isoview(map);
 	return (error_msg(error_code));
 }
 
@@ -48,14 +49,14 @@ int	main(int argc, char *argv[])
 {
 	t_prog	prog;
 	t_img	img;
+	t_img	img2;
 
 	if (!init(&prog.win, &prog.map, argc, argv))
 		return (-1);
 	new_img(&img, &prog.win);
+	new_img(&img2, &prog.win);
 	prog.img = &img;
-	translate(- ((prog.map.max.x - 1) * X_SC) / 2,
-		- ((prog.map.max.y - 1) * Y_SC) / 2, 0, &prog.map);
-	isoview(&prog.map);
+	prog.buf = &img2;
 	print_map_img(&prog.map, prog.img);
 	render(&prog);
 	mlx_hook(prog.win.win, KeyPress, KeyPressMask, key_pressed_hook, &prog);
@@ -63,6 +64,7 @@ int	main(int argc, char *argv[])
 	mlx_loop(prog.win.mlx);
 	free_map(&prog.map);
 	mlx_destroy_image(prog.win.mlx, img.img);
+	mlx_destroy_image(prog.win.mlx, img2.img);
 	mlx_destroy_window(prog.win.mlx, prog.win.win);
 	mlx_destroy_display(prog.win.mlx);
 	free(prog.win.mlx);

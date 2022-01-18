@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 22:37:04 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/18 03:09:07 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/18 03:24:52 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,10 @@ void	print_map_img(t_map *map, t_img *img)
 
 int	render(t_prog *prog)
 {
+	void	*tmp;
+	tmp = prog->img;
+	prog->img = prog->buf;
+	prog->buf = tmp;
 	ft_bzero(prog->img->addr, sizeof(int) * W_WIDTH * W_HEIGHT);
 	print_map_img(&prog->map, prog->img);
 	mlx_put_image_to_window(prog->win.mlx, prog->win.win, prog->img->img, 0, 0);

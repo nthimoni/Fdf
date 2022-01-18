@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 18:40:52 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/18 02:41:42 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/18 03:21:08 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,22 @@
 #include "parse.h"
 #include "colors.h"
 #include "quit.h"
+#include "libft.h"
 
-void	isoview(t_map *map)
+int	isoview(t_map *map)
 {
+	int	code;
 	scale(0, map);
 	free_map(map);
-	parse_map(map, map->path);
-	//set_color(map);
+	code = parse_map(map, map->path);
+	if (code)
+		return (code);
 	translate(- ((map->max.x - 1) * X_SC) / 2,
 		- ((map->max.y - 1) * Y_SC) / 2, 0, map);
 	rotate_x(M_PI / 8, map);
 	rotate_y(-M_PI / 8, map);
 	rotate_z(M_PI_4, map);
+	return (0);
 }
 
 void	paraview(t_map *map)
@@ -35,7 +39,6 @@ void	paraview(t_map *map)
 	scale(0, map);
 	free_map(map);
 	parse_map(map, map->path);
-	//set_color(map);
 	translate(- ((map->max.x - 1) * X_SC) / 2,
 		- ((map->max.y - 1) * Y_SC) / 2, 0, map);
 	rotate_x(M_PI_4, map);

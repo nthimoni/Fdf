@@ -6,7 +6,7 @@
 /*   By: nthimoni <nthimoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 06:14:48 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/18 03:03:21 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/18 03:16:35 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ int	parse_map(t_map *map, char *file)
 
 	map->max.x = 0;
 	map->max.y = 0;
-	map->path = file;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (INV_ARG);

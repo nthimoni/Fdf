@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 01:07:50 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/18 03:08:05 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/18 03:23:20 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_prog
 	t_map	map;
 	t_win	win;
 	t_img	*img;
+	t_img	*buf;
 }	t_prog;
 
 #endif
