@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 03:02:56 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/16 18:18:13 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/18 01:14:14 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,12 @@ void	draw_line(t_2point p1, t_2point p2, t_img *img, int color)
 	int	dx;
 	int	dy;
 
+	if ((p1.x < -W_WIDTH / 2 && p2.x < -W_WIDTH / 2)
+		|| (p1.x >= W_WIDTH / 2 && p2.x >= W_WIDTH / 2))
+		return ;
+	if ((p1.y < -W_HEIGHT / 2 && p2.y < -W_HEIGHT / 2)
+		|| (p1.y >= W_HEIGHT / 2 && p2.y >= W_HEIGHT / 2))
+		return ;
 	dx = (p2.x - p1.x) * 2;
 	dy = (p2.y - p1.y) * 2;
 	if ((dx > 0 && dy >= 0) || (dx < 0 && dy <= 0))

@@ -6,7 +6,7 @@
 /*   By: nthimoni <nthimoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 06:14:48 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/17 22:53:50 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/18 03:03:21 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "parse.h"
 #include "error.h"
 #include "constantes.h"
+#include "colors.h"
 
 static int	get_map_size(t_map *map, int fd)
 {
@@ -26,11 +27,10 @@ static int	get_map_size(t_map *map, int fd)
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] == ' ' && (i == 0 || line[i - 1] != ' '))
+		if (line[i] != ' ' && (i == 0 || line[i - 1] == ' '))
 			map->max.x++;
 		i++;
 	}
-	map->max.x++;
 	while (line)
 	{
 		free(line);
@@ -66,13 +66,15 @@ static int	map_alloc(t_map *map)
 	return (0);
 }
 
-int	fill_map(t_map *map, int fd, int u)
+int	fill_map(t_map *map, int fd)
 {
 	char	*line;
 	char	**words;
 	int		i;
+	int		u;
 
 	line = get_next_line(fd);
+	u = 0;
 	while (line)
 	{
 		i = 0;
@@ -82,9 +84,7 @@ int	fill_map(t_map *map, int fd, int u)
 			return (BAD_ALLOC);
 		while (words[i])
 		{
-			map->map[u][i].x = (float)(i * X_SC);
-			map->map[u][i].y = (float)(u * Y_SC);
-			map->map[u][i].z = (float)(ft_atoi(words[i]) * Z_SC);
+			fill_point(&map->map[u][i], words[i], i, u);
 			free(words[i++]);
 		}
 		free(words);
@@ -115,7 +115,7 @@ int	parse_map(t_map *map, char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (INV_ARG);
-	error = fill_map(map, fd, 0);
+	error = fill_map(map, fd);
 	close(fd);
 	if (error)
 		return (error);

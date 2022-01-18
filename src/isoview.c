@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 18:40:52 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/18 00:41:08 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/18 02:41:42 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	isoview(t_map *map)
 	scale(0, map);
 	free_map(map);
 	parse_map(map, map->path);
-	set_color(map);
+	//set_color(map);
 	translate(- ((map->max.x - 1) * X_SC) / 2,
 		- ((map->max.y - 1) * Y_SC) / 2, 0, map);
 	rotate_x(M_PI / 8, map);
@@ -35,7 +35,7 @@ void	paraview(t_map *map)
 	scale(0, map);
 	free_map(map);
 	parse_map(map, map->path);
-	set_color(map);
+	//set_color(map);
 	translate(- ((map->max.x - 1) * X_SC) / 2,
 		- ((map->max.y - 1) * Y_SC) / 2, 0, map);
 	rotate_x(M_PI_4, map);

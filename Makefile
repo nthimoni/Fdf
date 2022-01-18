@@ -19,7 +19,8 @@ SRCS = main.c\
 	   utils.c\
 	   transfo.c\
 	   set_colors.c\
-	   isoview.c
+	   isoview.c\
+	   fill_point.c
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
 #####################################################################
 map = M_42

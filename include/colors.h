@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 02:28:17 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/18 00:45:03 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/18 02:18:57 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ unsigned char	get_g(int color);
 unsigned char	get_b(int color);
 void			set_color(t_map *map);
 int				mix_color(int c1, int c2);
+void			fill_point(t_point *pnt, char *line, int i, int u);
 
 #endif
