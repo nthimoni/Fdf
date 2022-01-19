@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 01:47:39 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/18 23:39:39 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/19 15:54:35 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,24 @@ static	int	ft_atoi_base(char *line, char *base)
 	}
 	return (ret);
 }
-#include <stdio.h>
+
+static int	get_hex_color(int *color, char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == 'x')
+		{
+			*color = ft_atoi_base(line + i + 1, HEXA_B);
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
 void	fill_point(t_map *map, char *line, int i, int u)
 {
 	int		j;
@@ -43,25 +60,18 @@ void	fill_point(t_map *map, char *line, int i, int u)
 	map->map[u][i].z = (float)(ft_atoi(line) * Z_SC);
 	z = map->map[u][i].z / Z_SC;
 	j = 0;
-	while (line[j])
-	{
-		if (line[j] == 'x')
-		{
-			map->map[u][i].color = ft_atoi_base(line + j + 1, HEXA_B);
-			return ;
-		}
-		j++;
-	}
+	if (get_hex_color(&map->map[u][i].color, line))
+		return ;
 	if (z <= GROUND_H)
 		map->map[u][i].color = GROUND_C;
 	else if (z <= LVL_2_H)
 	{
 		map->map[u][i].color = mix_color(LVL_1_C, LVL_2_C,
-		1 - (z - GROUND_H)/(LVL_2_H - GROUND_H));
+				1 - (z - GROUND_H) / (LVL_2_H - GROUND_H));
 	}
 	else
 	{
 		map->map[u][i].color = mix_color(LVL_3_C, LVL_4_C,
-		1 - (z - LVL_2_H)/(map->max.z - LVL_2_H));
+				1 - (z - LVL_2_H) / (map->max.z - LVL_2_H));
 	}
 }

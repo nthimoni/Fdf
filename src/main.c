@@ -6,7 +6,7 @@
 /*   By: nthimoni <nthimoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 04:15:01 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/18 03:22:51 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/19 16:07:54 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ static int	init(t_win *win, t_map *map, int argc, char *argv[])
 {
 	int	error_code;
 
+	if (argc != 2)
+		return (error_msg(INV_ARG));
+	map->map = NULL;
+	map->path = argv[1];
+	map->max = (t_point){0, 0, 0, STD_COLOR};
+	error_code = isoview(map);
+	if (error_code)
+		return (error_msg(error_code));
 	win->mlx = mlx_init();
 	if (!win->mlx)
 		return (error_msg(BAD_ALLOC));
@@ -36,13 +44,7 @@ static int	init(t_win *win, t_map *map, int argc, char *argv[])
 		return (error_msg(BAD_ALLOC));
 	win->w = W_WIDTH;
 	win->h = W_HEIGHT;
-	map->map = NULL;
-	map->path = argv[1];
-	map->max = (t_point){0, 0, 0, STD_COLOR};
-	if (argc != 2)
-		return (error_msg(INV_ARG));
-	error_code = isoview(map);
-	return (error_msg(error_code));
+	return (1);
 }
 
 int	main(int argc, char *argv[])

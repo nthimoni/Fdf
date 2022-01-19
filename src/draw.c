@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 22:37:04 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/18 21:10:28 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/19 15:51:18 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void	print_map_img(t_map *map, t_img *img)
 	int	u;
 	int	i;
 
-	i = 0;
-	while (i < map->max.y)
+	i = -1;
+	while (++i < map->max.y)
 	{
-		u = 0;
-		while (u < map->max.x)
+		u = -1;
+		while (++u < map->max.x)
 		{
 			if (u != map->max.x - 1)
 				draw_line((t_2point){(int)map->map[i][u].x,
@@ -54,17 +54,15 @@ void	print_map_img(t_map *map, t_img *img)
 					(t_2point){(int)map->map[i][u + 1].x,
 					(int)map->map[i][u + 1].y}, img,
 					mix_color(map->map[i][u].color,
-					map->map[i][u + 1].color, 0.5));
+						map->map[i][u + 1].color, 0.5));
 			if (i != map->max.y - 1)
 				draw_line((t_2point){(int)map->map[i][u].x,
 					(int)map->map[i][u].y},
 					(t_2point){(int)map->map[i + 1][u].x,
 					(int)map->map[i + 1][u].y}, img,
 					mix_color(map->map[i + 1][u].color,
-					map->map[i][u].color, 0.5));
-			u++;
+						map->map[i][u].color, 0.5));
 		}
-		i++;
 	}
 }
 

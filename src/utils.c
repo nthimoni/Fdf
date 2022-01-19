@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 03:25:42 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/18 23:24:53 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/19 15:53:38 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ void	swap_p(t_2point *p1, t_2point *p2, t_2point *d)
 
 void	get_max_z(t_map *map, char *line)
 {
-	char **words;
-	int	i;
+	char	**words;
+	int		i;
 
 	i = 0;
 	words = ft_split(line, ' ');
 	if (!words)
 		return ;
-	while(words[i])
+	while (words[i])
 	{
 		if (map->max.z < ft_atoi(words[i]))
 			map->max.z = ft_atoi(words[i]);

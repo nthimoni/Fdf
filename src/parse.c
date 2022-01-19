@@ -6,7 +6,7 @@
 /*   By: nthimoni <nthimoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 06:14:48 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/18 23:23:40 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/20 00:23:13 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ static int	map_alloc(t_map *map)
 {
 	int	i;
 
-	map->map = calloc(map->max.y, sizeof(t_point *));
+	map->map = ft_calloc(map->max.y, sizeof(t_point *));
 	if (!map->map)
 		return (BAD_ALLOC);
 	i = 0;
 	while (i < map->max.y)
 	{
-		map->map[i] = calloc(map->max.x, sizeof(t_point));
+		map->map[i] = ft_calloc(map->max.x, sizeof(t_point));
 		if (!map->map[i])
 			return (free_part_map(map, i));
 		i++;
@@ -87,7 +87,8 @@ int	fill_map(t_map *map, int fd)
 			return (BAD_ALLOC);
 		while (words[i])
 		{
-			fill_point(map, words[i], i, u);
+			if (i < map->max.x)
+				fill_point(map, words[i], i, u);
 			free(words[i++]);
 		}
 		free(words);
