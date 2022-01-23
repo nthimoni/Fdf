@@ -26,7 +26,7 @@ OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
 map = M_42
 #map = FR_S
 ######################################################################
-CC = clang -O3 -Ofast
+CC = clang -Ofast
 CFLAGS = -Wall -Wextra -Werror -D$(map)
 LINK = -lmlx -lft -lm -lXext -lX11
 INCPATH = -I$(INCDIR) -I$(FTINC) -I$(MLXPATH)

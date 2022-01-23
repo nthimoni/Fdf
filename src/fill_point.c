@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 01:47:39 by nthimoni          #+#    #+#             */
-/*   Updated: 2022/01/19 15:54:35 by nthimoni         ###   ########.fr       */
+/*   Updated: 2022/01/23 00:47:58 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,12 @@ static int	get_hex_color(int *color, char *line)
 
 void	fill_point(t_map *map, char *line, int i, int u)
 {
-	int		j;
 	float	z;
 
 	map->map[u][i].x = (float)(i * X_SC);
 	map->map[u][i].y = (float)(u * Y_SC);
 	map->map[u][i].z = (float)(ft_atoi(line) * Z_SC);
 	z = map->map[u][i].z / Z_SC;
-	j = 0;
 	if (get_hex_color(&map->map[u][i].color, line))
 		return ;
 	if (z <= GROUND_H)
